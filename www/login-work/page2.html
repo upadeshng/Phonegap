@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Contact Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+
+
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+
+<link rel="stylesheet" href="http://jquerymobile.com/demos/1.2.1/css/themes/default/jquery.mobile-1.2.1.css" />
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://jquerymobile.com/demos/1.2.1/js/jquery.mobile-1.2.1.js"></script>
+    <script type="text/javascript" >
+		$(document).ready(function(e){
+			// LOGOUT
+			$('#logout').click(function(e) {
+				localStorage.clear();		
+				window.location="index.html";//localStorage.setItem("userId","");			
+			});
+			
+			//LIST USER INFO
+			
+			var userId = localStorage.getItem("userId");	
+			$.ajax({
+					type : 'POST',
+					url : 'http://localhost/phonegap/userInfo.php',
+					dataType : 'json',
+					data : 'userId='+userId,
+					success : function(data) {
+						
+						$('#info').replaceWith(data[0]);
+						$('ul#mylist').listview('refresh');
+						
+					},
+					error : function() {
+						navigator.notification.alert("No Data Found", function() {});
+					}
+				});
+						
+			
+		});
+		
+</script>
+
+</head>
+<body>
+    
+            <div data-role="page">
+
+            
+    
+ 			<div data-role="header" data-theme="b"><h1>AMS LOGIN</h1></div>
+            
+            <div data-role="content">
+            		
+            	
+    			
+                <div class="content-primary">	
+                <a href="index.html" id="logout">Logout</a><br><br>
+                 
+				<ul id="mylist" data-role="listview" data-theme="d" data-divider-theme="d">
+                	<div id="info">sdsd</div>
+               
+               </ul>
+
+
+
+                </div>
+            
+            </div>
+            </div>
+</body>
+</html>

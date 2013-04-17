@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Contact Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+
+
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+
+<link rel="stylesheet" href="http://jquerymobile.com/demos/1.2.1/css/themes/default/jquery.mobile-1.2.1.css" />
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://jquerymobile.com/demos/1.2.1/js/jquery.mobile-1.2.1.js"></script>
+    <script type="text/javascript" >
+	alert("aa");
+		$(document).ready(function(e){
+			
+			//var pathname = window.location.pathname;
+			alert('pathname');
+			// LOGOUT
+			$('#logout').click(function(e) {
+				localStorage.clear();		
+				window.location="../../index.html";//localStorage.setItem("userId","");			
+			});
+			
+			//LIST USER INFO
+			
+			var userId = localStorage.getItem("userId");	
+			/*$.ajax({
+					type : 'POST',
+					//url : 'http://localhost/phonegap/userInfo.php',
+					url:'http://localhost/ams_live/ams/index.php?r=jobs/reqview',
+					dataType : 'json',
+					data : 'userId='+userId,
+					success : function(data) {
+						
+						$('#info').replaceWith(data[0]);
+						$('ul#mylist').listview('refresh');
+						
+					},
+					error : function() {
+						navigator.notification.alert("No Data Found", function() {});
+					}
+				});*/
+						
+			
+		});
+		
+</script>
+
+</head>
+<body>
+    
+            <div data-role="page">
+
+            
+    
+ 			<div data-role="header" data-theme="b">
+                    <div data-role="controlgroup" data-type="horizontal">
+                        <a data-role="button" data-icon="home" data-inline="true" id="logout" href="index.html">Logout</a>
+                        <a data-role="button" data-icon="back" data-inline="true" id="back" href="../../page2.html">Back</a>
+                    </div>
+                </div>
+            
+            <div data-role="content">
+    			
+                <div class="content-primary">	
+                 
+                	<div id="info">sdsd</div>
+               
+
+
+
+                </div>
+            
+            </div>
+            </div>
+</body>
+</html>
